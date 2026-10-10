@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>التقرير — أثر Report Hub</title>
+  <link rel="icon" href="assets/logo.jpg">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/print.css">
+  <!-- Session guard: runs before anything is rendered. -->
+  <script src="js/config.js"></script>
+  <script src="js/templates.js"></script>
+  <script src="js/auth.js"></script>
+  <script>if (!AtharAuth.getSession()) location.replace('index.html');</script>
+</head>
+<body>
+  <header class="topbar no-print">
+    <div class="topbar-id">
+      <img src="assets/logo.jpg" alt="" class="topbar-logo">
+      <div>
+        <div id="sec-name" class="topbar-sec"></div>
+        <div id="user-email" class="topbar-mail" dir="ltr"></div>
+      </div>
+    </div>
+    <button id="btn-logout" class="btn btn-light btn-sm" type="button">تسجيل الخروج</button>
+  </header>
+
+  <div class="toolbar no-print">
+    <button id="btn-pdf" class="btn btn-primary" type="button">تصدير PDF</button>
+    <button id="btn-save-json" class="btn" type="button">حفظ كملف JSON</button>
+    <button id="btn-load-json" class="btn" type="button">فتح ملف JSON</button>
+    <button id="btn-clear" class="btn btn-danger" type="button">مسح النموذج</button>
+    <span id="save-status" class="save-status" aria-live="polite"></span>
+    <input id="file-json" type="file" accept="application/json,.json" hidden>
+  </div>
+
+  <main id="form-root" class="form-root no-print"></main>
+  <div id="print-root" class="print-root"></div>
+
+  <script src="js/render.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

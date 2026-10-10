@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Password hash helper</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 560px; margin: 40px auto; padding: 0 16px; }
+    input { width: 100%; padding: 8px; font-size: 16px; margin: 6px 0 12px; box-sizing: border-box; }
+    code { display: block; word-break: break-all; background: #f1eff4; padding: 10px; border-radius: 6px; min-height: 1.5em; }
+  </style>
+</head>
+<body>
+  <h1>SHA-256 hash helper</h1>
+  <p>Type a password, then paste the hash below into <code style="display:inline;padding:2px 6px">js/config.js</code>. Nothing leaves your browser.</p>
+  <input id="pw" type="text" placeholder="new password" autocomplete="off">
+  <code id="out"></code>
+  <script src="../js/auth.js"></script>
+  <script>
+    const pw = document.getElementById('pw'), out = document.getElementById('out');
+    pw.addEventListener('input', async () => { out.textContent = pw.value ? await AtharAuth.sha256(pw.value) : ''; });
+  </script>
+</body>
+</html>
